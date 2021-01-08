@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'afterLogin.dart';
 import 'kitchenLogin.dart';
 
-bool login = false;
+bool login = true;
 
 class Body extends StatefulWidget {
   @override
@@ -14,7 +14,7 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: login ? AfterLogin() : KitchenLogin(),
+      child: login ? KitchenLogin() : AfterLogin(),
     );
   }
 }
