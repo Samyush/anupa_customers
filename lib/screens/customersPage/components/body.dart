@@ -1,4 +1,8 @@
+import 'package:anupa_customers/builder/halfPageBuilder.dart';
 import 'package:flutter/material.dart';
+
+import 'category/categorySection.dart';
+
 //randomizing
 
 class Body extends StatelessWidget {
@@ -12,12 +16,40 @@ class Body extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: Container(
-                  color: Colors.amber,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color(0xFFFBB376),
+
+                        Colors.white,
+
+                        // Color(0xFFFBCA8F),
+                      ],
+                    ),
+                  ),
+                  // color: Color(0xFFFBCA8F),
+                  child: HalfPageBuilder(
+                    label: 'My Orders',
+                  ),
                 ),
               ),
               Expanded(
                 child: Container(
-                  color: Colors.green,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
+                      colors: [
+                        Colors.white,
+
+                        // Color(0xFFFBCA8F),
+                        Color(0xFFFBB376),
+                      ],
+                    ),
+                  ),
+                  // color: Colors.green,
                 ),
               ),
             ],
@@ -25,7 +57,7 @@ class Body extends StatelessWidget {
         ),
         Expanded(
           flex: 2,
-          child: Container(),
+          child: CategorySection(),
         ),
       ],
     );
