@@ -12,7 +12,7 @@ class HalfPageUiBuilderInsideList extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: ListView.builder(
-            itemCount: orderList.length,
+            itemCount: ordersList.length,
             itemBuilder: (BuildContext context, int index) {
               return Padding(
                 padding: const EdgeInsets.all(5.0),
@@ -25,22 +25,25 @@ class HalfPageUiBuilderInsideList extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Text(
-                          orderList[index],
+                          'Order number: ' + ordersList[index]['orderNo'],
                           style: TextStyle(fontSize: 25),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0),
                         child: Text(
-                          'Table number: 1',
-                          style: TextStyle(fontSize: 25),
+                          'Table number: ' + ordersList[index]['tableNo'],
+
+                          //'Table number: 1',
+                          style: TextStyle(fontSize: 20),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0),
                         child: Text(
-                          'Food Item: Gurkha Ice',
-                          style: TextStyle(fontSize: 25),
+                          'Order item: ' + ordersList[index]['foodName'],
+                          //'Food Item: Gurkha Ice',
+                          style: TextStyle(fontSize: 20),
                         ),
                       ),
                     ],
