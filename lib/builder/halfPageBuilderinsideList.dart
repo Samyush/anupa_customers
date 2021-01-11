@@ -18,13 +18,28 @@ class HalfPageUiBuilderInsideList extends StatelessWidget {
                 padding: const EdgeInsets.all(5.0),
                 child: Card(
                   //color: Colors.white60,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  child: Column(
+                    // mainAxisAlignment: MainAxisAlignment.,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Text(
                           orderList[index],
+                          style: TextStyle(fontSize: 25),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0),
+                        child: Text(
+                          'Table number: 1',
+                          style: TextStyle(fontSize: 25),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0),
+                        child: Text(
+                          'Food Item: Gurkha Ice',
                           style: TextStyle(fontSize: 25),
                         ),
                       ),

@@ -8,5 +8,24 @@ List orderList = [
   'Order 7',
   'Order 8',
   'Order 9',
-  'Order 10'
+  'Order 10',
+  //{'o', '', ''}
+];
+
+List ordersList = [
+  {
+    'orderNo': '1',
+    'tableNo': '3',
+    'foodName': 'foods 1',
+  },
+  {
+    'orderNo': '1',
+    'tableNo': '3',
+    'foodName': 'foods 1',
+  },
+  {
+    'orderNo': '1',
+    'tableNo': '3',
+    'foodName': 'foods 1',
+  },
 ];
