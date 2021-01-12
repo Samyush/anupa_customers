@@ -31,6 +31,7 @@ class FoodDisplayListBuilder extends StatelessWidget {
                     child: FoodDisplayBuilder(
                       foodName: foodCategory[index]["name"],
                       imgPath: foodCategory[index]["image"],
+                      foodRate: foodCategory[index]["rate"],
                       // press: () {
                       //   //the following directs towards the per sign in index page
                       //   Navigator.pushNamed(context, categories[index]["page"]);

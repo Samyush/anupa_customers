@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 
 class FoodDisplayBuilder extends StatelessWidget {
   final String foodName;
+  final String foodRate;
+
   final String imgPath;
   final GestureDetector press;
 
-  FoodDisplayBuilder({this.foodName, this.imgPath, this.press});
+  FoodDisplayBuilder({this.foodName, this.imgPath, this.press, this.foodRate});
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 40,
-      width: 40,
+      // height: 80,
+      // width: 80,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15.0),
           boxShadow: [
@@ -21,9 +23,15 @@ class FoodDisplayBuilder extends StatelessWidget {
           ],
           color: Colors.white),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           Image.asset(imgPath),
+          Divider(
+            height: 7,
+            color: Colors.black,
+          ),
           Text(foodName),
+          Text('rate: \$\$\$' + foodRate),
         ],
       ),
     );
