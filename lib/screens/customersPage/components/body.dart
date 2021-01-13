@@ -1,4 +1,5 @@
 import 'package:anupa_customers/builder/halfPageBuilder.dart';
+import 'package:anupa_customers/screens/customersPage/components/submissionOrderPage.dart';
 import 'package:flutter/material.dart';
 
 import 'category/categorySection.dart';
@@ -49,6 +50,7 @@ class Body extends StatelessWidget {
                       ],
                     ),
                   ),
+                  child: SubmissionOrderPart(),
                   // color: Colors.green,
                 ),
               ),
