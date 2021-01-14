@@ -1,11 +1,18 @@
+import 'package:anupa_customers/screens/customersPage/components/selectedFood.dart';
+import 'package:anupa_customers/screens/customersPage/components/submissionOrderPage.dart';
 import 'package:flutter/material.dart';
 
 import 'foodDisplaySingle.dart';
 
-class FoodDisplayListBuilder extends StatelessWidget {
+class FoodDisplayListBuilder extends StatefulWidget {
   final List foodCategory;
   FoodDisplayListBuilder({@required this.foodCategory});
 
+  @override
+  _FoodDisplayListBuilderState createState() => _FoodDisplayListBuilderState();
+}
+
+class _FoodDisplayListBuilderState extends State<FoodDisplayListBuilder> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,17 +32,23 @@ class FoodDisplayListBuilder extends StatelessWidget {
                 mainAxisSpacing: 15.0,
                 childAspectRatio: 0.8,
                 children: List.generate(
-                  foodCategory.length,
+                  widget.foodCategory.length,
                   (index) => Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: FoodDisplayBuilder(
-                      foodName: foodCategory[index]["name"],
-                      imgPath: foodCategory[index]["image"],
-                      foodRate: foodCategory[index]["rate"],
-                      // press: () {
-                      //   //the following directs towards the per sign in index page
-                      //   Navigator.pushNamed(context, categories[index]["page"]);
-                      // },
+                      foodName: widget.foodCategory[index]["name"],
+                      imgPath: widget.foodCategory[index]["image"],
+                      foodRate: widget.foodCategory[index]["rate"],
+                      press: () {
+                        SubmissionOrderPartState()
+                            .changingValue(widget.foodCategory[index]["name"]);
+                        print(widget.foodCategory[index]["name"]);
+                        //selectedIsFood = widget.foodCategory[index]["name"];
+                        setState(() {
+                          selectedIsFood = widget.foodCategory[index]["name"];
+                        });
+                        print(selectedIsFood);
+                      },
                     ),
                   ),
                 ),
