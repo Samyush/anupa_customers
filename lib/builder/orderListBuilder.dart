@@ -7,11 +7,17 @@ class OrderListBuilder {
 
   OrderListBuilder({this.orderNo, this.tableNo, this.foodName});
 
-  listAdder() {
+  listAdder(String foodIs) {
+    // Map orders = {
+    //   'orderNo': orderNo,
+    //   'tableNo': tableNo,
+    //   'foodName': foodName,
+    // };
+
     Map orders = {
-      'orderNo': orderNo,
-      'tableNo': tableNo,
-      'foodName': foodName,
+      'orderNo': '9',
+      'tableNo': '9',
+      'foodName': foodIs,
     };
     ordersList.add(orders);
     print(ordersList);

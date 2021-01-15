@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:anupa_customers/builder/customButton.dart';
 import 'package:anupa_customers/builder/orderListBuilder.dart';
 import 'package:anupa_customers/resources/appList.dart';
@@ -10,39 +12,65 @@ class SubmissionOrderPart extends StatefulWidget {
 }
 
 class SubmissionOrderPartState extends State<SubmissionOrderPart> {
-  String isVals = 'jpt';
+  //new Timer.periodic(oneSecond, (Timer t) => setState((){}));
 
-  void changingValue(String value) async {
-    isVals = value;
-  }
+  Stream<int> _bids = (() async* {
+    yield* Stream.periodic(Duration(seconds: 1), (int a) {
+      //return selectedIsFood;
+
+      return a++;
+    });
+  })();
+
+  // Stream<String> _bid = (() async* {
+  //   final _controller = StreamController<String>();
+  //
+  //   Timer.periodic(Duration(seconds: 1), (timer) {
+  //     _controller.add(selectedIsFood);
+  //   });
+  //
+  //   //Stream<String> get stream => _controller.stream;
+  // })();
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Text('drop box'),
-            Text(selectedIsFood),
-            Text(isVals),
+    return StreamBuilder(
+        stream: SelectedFood().stream,
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return Center(
+              child: CircularProgressIndicator(
+                backgroundColor: Colors.lightBlueAccent,
+              ),
+            );
+          }
+          return Row(
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Text('drop box'),
+                  Text(selectedIsFood),
+                  //Text(snapshot.data.toString()),
+                  //Text(selectedItem),
 
-            //Text('submit Button'),
-            CustomButton(
-                label: 'Submit',
-                onPressed: () {
-                  setState(() {
-                    isVals = 'hero';
-                  });
-                  OrderListBuilder().listAdder();
-                  orderList.add('value');
-                  print(orderList);
-                }
-                // _showMyDialog(),
-                ),
-          ],
-        ),
-      ],
-    );
+                  //Text('submit Button'),
+                  CustomButton(
+                      label: 'Submit',
+                      onPressed: () {
+                        setState(() {
+                          //selectedItem = 'hero';
+                        });
+                        OrderListBuilder().listAdder(selectedIsFood);
+                        orderList.add('value');
+                        print(orderList);
+                      }
+                      // _showMyDialog(),
+                      ),
+                ],
+              ),
+            ],
+          );
+        });
   }
 }
