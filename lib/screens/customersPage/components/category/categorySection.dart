@@ -52,6 +52,9 @@ class _CategorySectionState extends State<CategorySection>
               width: double.infinity,
               child: TabBarView(controller: _tabController, children: [
                 // for (String cato in categoryList)
+                // for (String category in categoryList)
+                // FoodDisplayListBuilder(foodCategory: category),
+
                 FoodDisplayListBuilder(foodCategory: alCarte),
                 FoodDisplayListBuilder(foodCategory: choupsey),
                 FoodDisplayListBuilder(foodCategory: chilly),
@@ -69,3 +72,5 @@ class _CategorySectionState extends State<CategorySection>
     );
   }
 }
+
+//changes to be done tomorrow
