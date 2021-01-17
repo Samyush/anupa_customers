@@ -18,18 +18,6 @@ class FoodDisplayBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: press,
-
-      //     () {
-      //   print(widget.foodName);
-      //
-      //   setState(() {
-      //     label = widget.foodName;
-      //   });
-      //   //SubmissionOrderPartState().getLabel(foodName);
-      //
-      //   //foodIsI = foodName;
-      //   labelIs(widget.foodName);
-      // },
       child: Container(
         // height: 80,
         // width: 80,
