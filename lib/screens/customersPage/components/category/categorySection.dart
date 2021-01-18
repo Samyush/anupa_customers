@@ -19,7 +19,7 @@ class _CategorySectionState extends State<CategorySection>
   void initState() {
     // TODO: implement initState
     super.initState();
-    _tabController = TabController(length: categoryList.length, vsync: this);
+    _tabController = TabController(length: foodsAre.length, vsync: this);
   }
 
   @override
@@ -36,10 +36,10 @@ class _CategorySectionState extends State<CategorySection>
               labelPadding: EdgeInsets.only(right: 45.0),
               unselectedLabelColor: Color(0xFFCDCDCD),
               tabs: [
-                for (String category in categoryList)
+                for (int i = 0; i < foodsAre.length; i++)
                   Tab(
                     child: Text(
-                      category,
+                      foodsAre[i].category,
                       style: TextStyle(
                         fontFamily: 'Varela',
                         fontSize: 21.0,
@@ -51,21 +51,10 @@ class _CategorySectionState extends State<CategorySection>
               height: MediaQuery.of(context).size.height - 70,
               width: double.infinity,
               child: TabBarView(controller: _tabController, children: [
-                // for (String cato in categoryList)
-                // for (String category in categoryList)
-                // FoodDisplayListBuilder(foodCategory: category),
-
-                FoodDisplayListBuilder(foodCategory: alCarte),
-                FoodDisplayListBuilder(foodCategory: choupsey),
-                FoodDisplayListBuilder(foodCategory: chilly),
-                FoodDisplayListBuilder(foodCategory: choila),
-                FoodDisplayListBuilder(foodCategory: chowmin),
-                FoodDisplayListBuilder(foodCategory: friedRice),
-                FoodDisplayListBuilder(foodCategory: localRiceBowel),
-                FoodDisplayListBuilder(foodCategory: localKatiya),
-                FoodDisplayListBuilder(foodCategory: momo),
-                FoodDisplayListBuilder(foodCategory: sekuwa),
-                FoodDisplayListBuilder(foodCategory: thakaliSet),
+                for (int i = 0; i < foodsAre.length; i++)
+                  FoodDisplayListBuilder(
+                    foodCategory: foodsAre[i].categoryFood,
+                  ),
               ]))
         ],
       ),
