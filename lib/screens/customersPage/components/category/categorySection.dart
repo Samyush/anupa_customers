@@ -61,5 +61,3 @@ class _CategorySectionState extends State<CategorySection>
     );
   }
 }
-
-//changes to be done tomorrow
