@@ -8,3 +8,4 @@ class Foods {
 }
 
 //to add changes making app dynamic
+// randomizer
