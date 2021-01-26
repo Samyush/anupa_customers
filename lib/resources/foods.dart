@@ -6,4 +6,3 @@ class Foods {
   // Foods({this.category, this.categoryFood});
   Foods(this.category, this.categoryFood);
 }
-//randominzing
