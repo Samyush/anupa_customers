@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:anupa_customers/builder/customButton.dart';
 import 'package:anupa_customers/builder/orderListBuilder.dart';
 import 'package:anupa_customers/resources/appList.dart';
@@ -14,13 +12,13 @@ class SubmissionOrderPart extends StatefulWidget {
 class SubmissionOrderPartState extends State<SubmissionOrderPart> {
   //new Timer.periodic(oneSecond, (Timer t) => setState((){}));
 
-  Stream<int> _bids = (() async* {
-    yield* Stream.periodic(Duration(seconds: 1), (int a) {
-      //return selectedIsFood;
-
-      return a++;
-    });
-  })();
+  // Stream<int> _bids = (() async* {
+  //   yield* Stream.periodic(Duration(seconds: 1), (int a) {
+  //     //return selectedIsFood;
+  //
+  //     return a++;
+  //   });
+  // })();
 
   // Stream<String> _bid = (() async* {
   //   final _controller = StreamController<String>();

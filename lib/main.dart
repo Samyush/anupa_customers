@@ -2,9 +2,7 @@ import 'package:anupa_customers/screens/splashScreen/splashDisplay.dart';
 import 'package:anupa_customers/theme.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
