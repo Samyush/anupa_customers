@@ -10,6 +10,7 @@ class SubmissionOrderPart extends StatefulWidget {
 }
 
 class SubmissionOrderPartState extends State<SubmissionOrderPart> {
+  String dropdownValue = 'One';
   //new Timer.periodic(oneSecond, (Timer t) => setState((){}));
 
   // Stream<int> _bids = (() async* {
@@ -47,7 +48,31 @@ class SubmissionOrderPartState extends State<SubmissionOrderPart> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Text('drop box'),
+                  DropdownButton(
+                      value: dropdownValue,
+                      icon: Icon(Icons.arrow_downward),
+                      iconSize: 24,
+                      elevation: 16,
+                      style: TextStyle(color: Colors.deepPurple),
+                      underline: Container(
+                        height: 2,
+                        color: Colors.deepPurpleAccent,
+                      ),
+                      items: <String>['One', 'Two', 'Free', 'Four']
+                          .map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                      onChanged: (String newValue) {
+                        setState(
+                          () {
+                            dropdownValue = newValue;
+                          },
+                        );
+                      }),
+
                   Text(selectedIsFood),
                   //Text(snapshot.data.toString()),
                   //Text(selectedItem),
