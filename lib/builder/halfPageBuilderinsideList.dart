@@ -1,3 +1,4 @@
+import 'package:anupa_customers/builder/streamer/argonButton.dart';
 import 'package:anupa_customers/builder/streamer/orderStreamer.dart';
 import 'package:anupa_customers/resources/appList.dart';
 import 'package:flutter/material.dart';
@@ -22,34 +23,44 @@ class HalfPageUiBuilderInsideList extends StatelessWidget {
                       padding: const EdgeInsets.all(5.0),
                       child: Card(
                         //color: Colors.white60,
-                        child: Column(
-                          // mainAxisAlignment: MainAxisAlignment.,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Text(
-                                'Order number: ' + ordersList[index]['orderNo'],
-                                style: TextStyle(fontSize: 25),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10.0),
-                              child: Text(
-                                'Table number: ' + ordersList[index]['tableNo'],
+                            Column(
+                              // mainAxisAlignment: MainAxisAlignment.,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Text(
+                                    'Order number: ' +
+                                        ordersList[index]['orderNo'],
+                                    style: TextStyle(fontSize: 25),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10.0),
+                                  child: Text(
+                                    'Table number: ' +
+                                        ordersList[index]['tableNo'],
 
-                                //'Table number: 1',
-                                style: TextStyle(fontSize: 20),
-                              ),
+                                    //'Table number: 1',
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10.0),
+                                  child: Text(
+                                    'Order item: ' +
+                                        ordersList[index]['foodName'],
+                                    //'Food Item: Gurkha Ice',
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                ),
+                              ],
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10.0),
-                              child: Text(
-                                'Order item: ' + ordersList[index]['foodName'],
-                                //'Food Item: Gurkha Ice',
-                                style: TextStyle(fontSize: 20),
-                              ),
-                            ),
+                            //following adds on update button in order lists
+                            ArgonButt(),
                           ],
                         ),
                       ),
