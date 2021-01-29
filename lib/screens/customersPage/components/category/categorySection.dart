@@ -1,5 +1,5 @@
+import 'package:anupa_customers/appLists/foodItemList.dart';
 import 'package:anupa_customers/builder/foodDisplayList.dart';
-import 'package:anupa_customers/resources/foodItemList.dart';
 import 'package:flutter/material.dart';
 
 class CategorySection extends StatefulWidget {

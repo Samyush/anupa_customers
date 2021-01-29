@@ -19,11 +19,15 @@ class ArgonButt extends StatelessWidget {
             stopLoading();
           }
         },
-        child: Text(
-          "Text",
-          style: TextStyle(
-              color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700),
+        child: Icon(
+          Icons.delete_outlined,
+          color: Colors.white,
         ),
+        // Text(
+        //   "Text",
+        //   style: TextStyle(
+        //       color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700),
+        // ),
         loader: Container(
           padding: EdgeInsets.all(10),
           child: SpinKitDualRing(
@@ -32,7 +36,7 @@ class ArgonButt extends StatelessWidget {
           ),
         ),
         borderRadius: 5.0,
-        color: Color(0xFFfb4747),
+        color: Color(0xFFAC8033),
       ),
     );
   }

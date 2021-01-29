@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:anupa_customers/resources/appList.dart';
+import 'package:anupa_customers/appLists/customersPageList.dart';
 
 class OrderStreamer {
   // Stream
   OrderStreamer() {
     Timer.periodic(Duration(seconds: 1), (timer) {
-      _controller.add(ordersList);
+      _controller.add(customersOrders);
     });
   }
 

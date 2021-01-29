@@ -1,6 +1,5 @@
 import 'package:anupa_customers/builder/customButton.dart';
 import 'package:anupa_customers/builder/orderListBuilder.dart';
-import 'package:anupa_customers/resources/appList.dart';
 import 'package:anupa_customers/screens/customersPage/components/selectedFood.dart';
 import 'package:flutter/material.dart';
 
@@ -85,8 +84,8 @@ class SubmissionOrderPartState extends State<SubmissionOrderPart> {
                           //selectedItem = 'hero';
                         });
                         OrderListBuilder().listAdder(selectedIsFood);
-                        orderList.add('value');
-                        print(orderList);
+                        // orderList.add('value');
+                        // print(orderList);
                       }
                       // _showMyDialog(),
                       ),

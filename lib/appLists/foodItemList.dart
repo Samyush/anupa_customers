@@ -1,4 +1,4 @@
-import 'foods.dart';
+import '../constants/foods.dart';
 
 List foodsAre = [
   Foods('alCarte', [

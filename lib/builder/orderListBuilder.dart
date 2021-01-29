@@ -1,4 +1,4 @@
-import 'package:anupa_customers/resources/appList.dart';
+import 'package:anupa_customers/appLists/customersPageList.dart';
 
 class OrderListBuilder {
   final String orderNo;
@@ -19,7 +19,7 @@ class OrderListBuilder {
       'tableNo': '9',
       'foodName': foodIs,
     };
-    ordersList.add(orders);
-    print(ordersList);
+    customersOrders.add(orders);
+    print(customersOrders);
   }
 }
