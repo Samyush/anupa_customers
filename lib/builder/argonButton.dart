@@ -1,8 +1,11 @@
+import 'package:anupa_customers/appLists/customersPageList.dart';
 import 'package:argon_buttons_flutter/argon_buttons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class ArgonButt extends StatelessWidget {
+  final Function tap;
+  ArgonButt({this.tap});
   @override
   Widget build(BuildContext context) {
     //the required loading button
@@ -12,7 +15,9 @@ class ArgonButt extends StatelessWidget {
         height: 50,
         roundLoadingShape: true,
         width: 80,
+        // onTap: tap,
         onTap: (startLoading, stopLoading, btnState) {
+          customersOrders.removeLast();
           if (btnState == ButtonState.Idle) {
             startLoading();
           } else {

@@ -51,8 +51,7 @@ class HalfPageUiBuilderInsideList extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 10.0),
                                   child: Text(
-                                    'Order item: ' +
-                                        customersOrders[index]['foodName'],
+                                    '' + customersOrders[index]['foodName'],
                                     //'Food Item: Gurkha Ice',
                                     style: TextStyle(fontSize: 20),
                                   ),

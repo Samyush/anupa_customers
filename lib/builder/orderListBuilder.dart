@@ -15,8 +15,8 @@ class OrderListBuilder {
     // };
 
     Map orders = {
-      'orderNo': '9',
-      'tableNo': '9',
+      'orderNo': (customersOrders.length + 1).toString(),
+      'tableNo': '1',
       'foodName': foodIs,
     };
     customersOrders.add(orders);
