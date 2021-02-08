@@ -1,6 +1,7 @@
 import 'package:anupa_customers/appLists/customersPageList.dart';
 import 'package:anupa_customers/builder/argonButton.dart';
 import 'package:anupa_customers/builder/streamer/orderStreamer.dart';
+import 'package:argon_buttons_flutter/argon_buttons_flutter.dart';
 import 'package:flutter/material.dart';
 
 class HalfPageUiBuilderInsideList extends StatelessWidget {
@@ -59,7 +60,16 @@ class HalfPageUiBuilderInsideList extends StatelessWidget {
                               ],
                             ),
                             //following adds on update button in order lists
-                            ArgonButt(),
+                            ArgonButt(
+                              tap: (startLoading, stopLoading, btnState) {
+                                customersOrders.removeAt(index);
+                                if (btnState == ButtonState.Idle) {
+                                  startLoading();
+                                } else {
+                                  stopLoading();
+                                }
+                              },
+                            ),
                           ],
                         ),
                       ),

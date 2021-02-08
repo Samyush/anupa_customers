@@ -1,4 +1,3 @@
-import 'package:anupa_customers/appLists/customersPageList.dart';
 import 'package:argon_buttons_flutter/argon_buttons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -15,15 +14,15 @@ class ArgonButt extends StatelessWidget {
         height: 50,
         roundLoadingShape: true,
         width: 80,
-        // onTap: tap,
-        onTap: (startLoading, stopLoading, btnState) {
-          customersOrders.removeLast();
-          if (btnState == ButtonState.Idle) {
-            startLoading();
-          } else {
-            stopLoading();
-          }
-        },
+        onTap: tap,
+        // onTap: (startLoading, stopLoading, btnState) {
+        //   customersOrders.removeLast();
+        //   if (btnState == ButtonState.Idle) {
+        //     startLoading();
+        //   } else {
+        //     stopLoading();
+        //   }
+        // },
         child: Icon(
           Icons.delete_outlined,
           color: Colors.white,
