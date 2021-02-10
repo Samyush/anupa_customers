@@ -3,6 +3,8 @@ import 'package:anupa_customers/builder/orderListBuilder.dart';
 import 'package:anupa_customers/screens/customersPage/components/selectedFood.dart';
 import 'package:flutter/material.dart';
 
+import 'color_dots.dart';
+
 class SubmissionOrderPart extends StatefulWidget {
   @override
   SubmissionOrderPartState createState() => SubmissionOrderPartState();
@@ -73,10 +75,11 @@ class SubmissionOrderPartState extends State<SubmissionOrderPart> {
                       }),
 
                   Text(selectedIsFood),
+                  ColorDots(),
                   //Text(snapshot.data.toString()),
                   //Text(selectedItem),
 
-                  //Text('submit Button'),
+                  // Text('Quantity'),
                   CustomButton(
                       label: 'Submit',
                       onPressed: () {
