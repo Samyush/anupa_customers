@@ -34,7 +34,7 @@ class HalfPageUiBuilderInsideList extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.all(10.0),
                                   child: Text(
-                                    'Order number: ' +
+                                    'Order No: ' +
                                         customersOrders[index]['orderNo'],
                                     style: TextStyle(fontSize: 25),
                                   ),
@@ -42,7 +42,7 @@ class HalfPageUiBuilderInsideList extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 10.0),
                                   child: Text(
-                                    'Table number: ' +
+                                    'Table No: ' +
                                         customersOrders[index]['tableNo'],
 
                                     //'Table number: 1',
@@ -53,6 +53,24 @@ class HalfPageUiBuilderInsideList extends StatelessWidget {
                                   padding: const EdgeInsets.only(left: 10.0),
                                   child: Text(
                                     '' + customersOrders[index]['foodName'],
+                                    //'Food Item: Gurkha Ice',
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10.0),
+                                  child: Text(
+                                    'quantity : ' +
+                                        customersOrders[index]['quantity'],
+                                    //'Food Item: Gurkha Ice',
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10.0),
+                                  child: Text(
+                                    '\$\$ bill : ' +
+                                        customersOrders[index]['bill'],
                                     //'Food Item: Gurkha Ice',
                                     style: TextStyle(fontSize: 20),
                                   ),

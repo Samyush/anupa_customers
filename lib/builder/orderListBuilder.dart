@@ -18,6 +18,8 @@ class OrderListBuilder {
       'orderNo': (customersOrders.length + 1).toString(),
       'tableNo': '1',
       'foodName': foodIs,
+      'quantity': 'X 2',
+      'bill': '\$1000',
     };
     customersOrders.add(orders);
     print(customersOrders);

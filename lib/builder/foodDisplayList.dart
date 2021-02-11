@@ -1,4 +1,4 @@
-import 'package:anupa_customers/screens/customersPage/components/selectedFood.dart';
+import 'package:anupa_customers/builder/streamer/foodStreamer.dart';
 import 'package:flutter/material.dart';
 
 import 'foodDisplaySingle.dart';
