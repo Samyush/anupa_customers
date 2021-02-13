@@ -1,6 +1,6 @@
 # anupa_customers
 
-A new Flutter project.Random uh
+A new Flutter project
 
 ## Getting Started
 
