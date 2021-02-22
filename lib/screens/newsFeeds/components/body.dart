@@ -1,4 +1,3 @@
-import 'package:anupa_customers/builder/halfPageBuilder.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
@@ -9,37 +8,29 @@ class Body extends StatelessWidget {
         //
 
         Expanded(
-          child: HalfPageBuilder(
-            label: 'Hope You Have a Great Time Here!!!',
+          child: Container(
+            // height: queryData.size.height,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("images/wallPP.jpg"), fit: BoxFit.cover),
+            ),
+            child: Center(
+              child: Image.asset(
+                'images/anupaRestro.png',
+                // height: queryData.size.height / 1.8,
+                // width: queryData.size.width / 1.8,
+              ),
+            ),
           ),
         ),
-
-        //   Expanded(
-        //     child: Container(
-        //       // height: 20,
-        //       color: Colors.green,
-        //     ),
-        //   ),
-        //   Expanded(
-        //     child: Container(
-        //       // height: 20,
-        //       color: Colors.blue,
-        //     ),
-        //   ),
-        //   Expanded(
-        //     child: Container(
-        //       // height: 20,
-        //       color: Colors.yellow,
-        //     ),
-        //   ),
-        //   Container(
-        //     height: 20,
-        //     color: Colors.black,
-        //   ),
-        //   Container(
-        //     height: 20,
-        //     color: Colors.green,
-        //   ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text('hello'),
+            Text('hello'),
+            Text('hello'),
+          ],
+        ),
       ],
     );
   }
