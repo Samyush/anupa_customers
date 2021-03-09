@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:anupa_customers/networking/serverConnection/mainConnection.dart';
+import 'package:anupa_customers/networking/serverConnection/UserPersonalDemands/allFoods.dart';
 import 'package:anupa_customers/screens/bottomNavigations/bottomNavs.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    MainConnection().receiveData();
+    AllFoods().getFoods();
     Timer(
         Duration(seconds: 5),
         () => Navigator.of(context).pushReplacement(MaterialPageRoute(
