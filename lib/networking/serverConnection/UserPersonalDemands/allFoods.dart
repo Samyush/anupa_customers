@@ -1,3 +1,5 @@
+import 'package:anupa_customers/appLists/foodItemList.dart';
+import 'package:anupa_customers/constants/foods.dart';
 import 'package:anupa_customers/networking/API_constants/apiS.dart';
 import 'package:anupa_customers/networking/serverConnection/mainConnection.dart';
 
@@ -13,11 +15,15 @@ class AllFoods {
 
   renderFoods(dynamic food) async {
     var foods = food['data'];
-    var category;
-    var allFoods;
+    String category;
+    List allFoods;
     for (int i = 0; i < foods.length; i++) {
-      category = foods[i]['name'];
-      allFoods = foods[i]['food'];
+      category = foods[i]['name'].toString();
+      allFoods = foods[i]['food'].toList();
+
+      foodsAre.add(Foods(category, allFoods));
+
+      //Foods(category, allFoods);
       print(category);
       print(allFoods);
     }

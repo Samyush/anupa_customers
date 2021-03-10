@@ -41,7 +41,7 @@ class FoodDisplayListBuilder extends StatelessWidget {
                     child: FoodDisplayBuilder(
                       foodName: foodCategory[index]["name"],
                       imgPath: foodCategory[index]["image"],
-                      foodRate: foodCategory[index]["rate"],
+                      foodRate: foodCategory[index]["price"].toString(),
                       press: () {
                         // SubmissionOrderPartState()
                         //     .changingValue(foodCategory[index]["name"]);
