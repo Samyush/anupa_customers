@@ -26,6 +26,7 @@ class _CategorySectionState extends State<CategorySection>
   Widget build(BuildContext context) {
     return Scaffold(
       // color: Colors.black12,
+
       body: ListView(
         children: <Widget>[
           TabBar(

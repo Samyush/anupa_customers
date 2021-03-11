@@ -18,13 +18,13 @@ class _KitchenLoginState extends State<KitchenLogin> {
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text('User Name:'),
-                Text('Password:'),
+                Text('This page is for Kitchen Staffs'),
+                Text('Here are our new Orders'),
               ],
             ),
           ),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               child: Text('Cancel'),
               onPressed: () {
                 setState(() {
@@ -32,7 +32,7 @@ class _KitchenLoginState extends State<KitchenLogin> {
                 });
               },
             ),
-            FlatButton(
+            TextButton(
               child: Text('OK'),
               onPressed: () {
                 setState(() {

@@ -1,5 +1,7 @@
+import 'package:anupa_customers/appLists/appList.dart';
 import 'package:anupa_customers/builder/customButton.dart';
 import 'package:anupa_customers/builder/orderListBuilder.dart';
+import 'package:anupa_customers/builder/streamer/foodPriceStreamer.dart';
 import 'package:anupa_customers/builder/streamer/foodStreamer.dart';
 import 'package:flutter/material.dart';
 
@@ -11,26 +13,51 @@ class SubmissionOrderPart extends StatefulWidget {
 }
 
 class SubmissionOrderPartState extends State<SubmissionOrderPart> {
-  String dropdownValue = 'One';
-  //new Timer.periodic(oneSecond, (Timer t) => setState((){}));
+  String dropdownValue;
 
-  // Stream<int> _bids = (() async* {
-  //   yield* Stream.periodic(Duration(seconds: 1), (int a) {
-  //     //return selectedIsFood;
-  //
-  //     return a++;
-  //   });
-  // })();
+  getPrice() {
+    String priceIs = selectedFoodPrice;
+    return priceIs;
+  }
 
-  // Stream<String> _bid = (() async* {
-  //   final _controller = StreamController<String>();
-  //
-  //   Timer.periodic(Duration(seconds: 1), (timer) {
-  //     _controller.add(selectedIsFood);
-  //   });
-  //
-  //   //Stream<String> get stream => _controller.stream;
-  // })();
+  _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Forgot to select Order Table!!!'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('Please select the order table or select food'),
+                Text('Thank you!!!'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Cancel'),
+              onPressed: () {
+                setState(() {
+                  Navigator.pop(context);
+                });
+              },
+            ),
+            TextButton(
+              child: Text('OK'),
+              onPressed: () {
+                setState(() {
+                  // login = false;
+                  Navigator.pop(context);
+                });
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +77,7 @@ class SubmissionOrderPartState extends State<SubmissionOrderPart> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   DropdownButton(
+                      hint: Text('Please select the Customer Table'),
                       value: dropdownValue,
                       icon: Icon(Icons.arrow_downward),
                       iconSize: 24,
@@ -59,11 +87,10 @@ class SubmissionOrderPartState extends State<SubmissionOrderPart> {
                         height: 2,
                         color: Colors.deepPurpleAccent,
                       ),
-                      items: <String>['One', 'Two', 'Free', 'Four']
-                          .map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
+                      items: tables.map((table) {
+                        return DropdownMenuItem(
+                          value: table,
+                          child: Text(table),
                         );
                       }).toList(),
                       onChanged: (String newValue) {
@@ -77,16 +104,21 @@ class SubmissionOrderPartState extends State<SubmissionOrderPart> {
                   Text(selectedIsFood),
                   ColorDots(),
                   //Text(snapshot.data.toString()),
-                  //Text(selectedItem),
+                  Text('Food Price: ' + getPrice()),
 
                   // Text('Quantity'),
                   CustomButton(
                       label: 'Submit',
                       onPressed: () {
-                        setState(() {
-                          //selectedItem = 'hero';
-                        });
-                        OrderListBuilder().listAdder(selectedIsFood);
+                        if (dropdownValue == null ||
+                            selectedIsFood == "Please Select Food") {
+                          _showMyDialog();
+                          print('error, select table number');
+                        } else {
+                          OrderListBuilder(
+                                  tableNo: dropdownValue, priceIs: getPrice())
+                              .listAdder(selectedIsFood);
+                        }
                         // orderList.add('value');
                         // print(orderList);
                       }

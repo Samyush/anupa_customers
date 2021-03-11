@@ -1,4 +1,6 @@
+import 'package:anupa_customers/builder/streamer/foodPriceStreamer.dart';
 import 'package:anupa_customers/builder/streamer/foodStreamer.dart';
+import 'package:anupa_customers/screens/customersPage/components/submissionOrderPage.dart';
 import 'package:flutter/material.dart';
 
 import 'foodDisplaySingle.dart';
@@ -48,6 +50,11 @@ class FoodDisplayListBuilder extends StatelessWidget {
                         print(foodCategory[index]["name"]);
                         selectedIsFood = foodCategory[index]["name"];
 
+                        selectedFoodPrice =
+                            foodCategory[index]["price"].toString();
+                        SubmissionOrderPartState().getPrice();
+                        // OrderListBuilder().getPrice(selectedFoodPrice);
+                        print(selectedFoodPrice);
                         print(selectedIsFood);
                       },
                     ),
