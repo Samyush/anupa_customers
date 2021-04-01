@@ -9,7 +9,7 @@ class MainConnection {
   final url;
 
   Future receiveData() async {
-    http.Response response = await http.get(urlFood);
+    http.Response response = await http.get(url);
     //print(response.statusCode);
 
     if (response.statusCode == 200) {

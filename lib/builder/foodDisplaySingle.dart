@@ -33,7 +33,7 @@ class FoodDisplayBuilder extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
-            Image.asset(imgPath),
+            Image.network(imgPath),
             Divider(
               height: 7,
               color: Colors.black,
