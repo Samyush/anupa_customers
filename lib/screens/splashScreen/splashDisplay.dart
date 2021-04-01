@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:anupa_customers/networking/serverConnection/UserPersonalDemands/allFoods.dart';
 import 'package:anupa_customers/screens/bottomNavigations/bottomNavs.dart';
+import 'package:anupa_customers/screens/loginRegister/loginScreen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(
         Duration(seconds: 5),
         () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => BottomNavigationPage())));
+            builder: (BuildContext context) => LoginScreen())));
   }
 
   @override

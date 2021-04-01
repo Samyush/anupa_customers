@@ -51,7 +51,7 @@ class _KitchenLoginState extends State<KitchenLogin> {
   Widget build(BuildContext context) {
     return Container(
       child: CustomButton(
-          label: 'LOGIN',
+          label: 'Get In',
           onPressed: () {
             setState(() {
               _showMyDialog();
