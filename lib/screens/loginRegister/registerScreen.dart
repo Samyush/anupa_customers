@@ -1,4 +1,9 @@
+import 'dart:convert';
+
+import 'package:anupa_customers/networking/API_constants/apiS.dart';
+import 'package:anupa_customers/screens/bottomNavigations/bottomNavs.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 import 'loginScreen.dart';
 
@@ -8,6 +13,40 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  bool showSpinner = false;
+
+  register(String name, email, pass) async {
+    // SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    Map data = {'email': email, 'password': pass, 'name': name};
+    var jsonResponse;
+    //kApiLogin is in constants.dart
+    var response = await http.post(urlRegister, body: data);
+    if (response.statusCode == 200) {
+      jsonResponse = json.decode(response.body);
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      if (jsonResponse != null) {
+        setState(() {
+          showSpinner = false;
+        });
+        // sharedPreferences.setString("token", jsonResponse['token']);
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+                builder: (BuildContext context) => BottomNavigationPage()),
+            (Route<dynamic> route) => false);
+      }
+    } else {
+      setState(() {
+        showSpinner = false;
+        // _showMyDialog();
+      });
+      print(response.body);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,17 +77,134 @@ class _RegisterState extends State<Register> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               SizedBox(height: 10),
-              buildFirstName(),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[350],
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 6,
+                          offset: Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    padding: EdgeInsets.only(left: 10),
+                    height: 50,
+                    child: TextField(
+                      controller: nameController,
+                      keyboardType: TextInputType.name,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        prefixIcon: Icon(
+                          Icons.account_circle,
+                        ),
+                        //contentPadding: EdgeInsets.only(left: 10),
+                        hintText: 'Name',
+                        hintStyle: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black87,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
               SizedBox(height: 20),
-              buildLastName(),
               SizedBox(height: 20),
-              buildEnterPassword(),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[350],
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 6,
+                          offset: Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    padding: EdgeInsets.only(left: 10),
+                    height: 50,
+                    child: TextField(
+                      controller: emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        prefixIcon: Icon(
+                          Icons.mail,
+                        ),
+                        //contentPadding: EdgeInsets.only(left: 10),
+                        hintText: 'Email',
+                        hintStyle: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black87,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
               SizedBox(height: 20),
-              buildAddress(),
               SizedBox(height: 20),
-              buildEmail(),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[350],
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 6,
+                          offset: Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    padding: EdgeInsets.only(left: 10),
+                    height: 50,
+                    child: TextField(
+                      controller: passwordController,
+                      keyboardType: TextInputType.visiblePassword,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        prefixIcon: Icon(
+                          Icons.vpn_key,
+                        ),
+                        //contentPadding: EdgeInsets.only(left: 10),
+                        hintText: 'Enter Password',
+                        hintStyle: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black87,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
               SizedBox(height: 20),
-              buildContact(),
               SizedBox(height: 30),
               Container(
                 height: 60.0,
@@ -58,10 +214,12 @@ class _RegisterState extends State<Register> {
                   color: Colors.redAccent[700],
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => LoginScreen()));
+                      register(nameController.text, emailController.text,
+                          passwordController.text);
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => LoginScreen()));
                     },
                     child: Center(
                       child: Text(
@@ -83,262 +241,4 @@ class _RegisterState extends State<Register> {
       ),
     );
   }
-}
-
-Widget buildFirstName() {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget>[
-      Container(
-        alignment: Alignment.centerLeft,
-        decoration: BoxDecoration(
-          color: Colors.grey[350],
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black26,
-              blurRadius: 6,
-              offset: Offset(0, 2),
-            ),
-          ],
-        ),
-        padding: EdgeInsets.only(left: 10),
-        height: 50,
-        child: TextField(
-          keyboardType: TextInputType.name,
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 18,
-          ),
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            prefixIcon: Icon(
-              Icons.account_circle,
-            ),
-            //contentPadding: EdgeInsets.only(left: 10),
-            hintText: 'First Name',
-            hintStyle: TextStyle(
-              fontSize: 18,
-              color: Colors.black87,
-            ),
-          ),
-        ),
-      ),
-    ],
-  );
-}
-
-Widget buildLastName() {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget>[
-      Container(
-        alignment: Alignment.centerLeft,
-        decoration: BoxDecoration(
-          color: Colors.grey[350],
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black26,
-              blurRadius: 6,
-              offset: Offset(0, 2),
-            ),
-          ],
-        ),
-        padding: EdgeInsets.only(left: 10),
-        height: 50,
-        child: TextField(
-          keyboardType: TextInputType.name,
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 18,
-          ),
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            prefixIcon: Icon(
-              Icons.account_circle,
-            ),
-            //contentPadding: EdgeInsets.only(left: 10),
-            hintText: 'Last Name',
-            hintStyle: TextStyle(
-              fontSize: 18,
-              color: Colors.black87,
-            ),
-          ),
-        ),
-      ),
-    ],
-  );
-}
-
-Widget buildEnterPassword() {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget>[
-      Container(
-        alignment: Alignment.centerLeft,
-        decoration: BoxDecoration(
-          color: Colors.grey[350],
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black26,
-              blurRadius: 6,
-              offset: Offset(0, 2),
-            ),
-          ],
-        ),
-        padding: EdgeInsets.only(left: 10),
-        height: 50,
-        child: TextField(
-          keyboardType: TextInputType.visiblePassword,
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 18,
-          ),
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            prefixIcon: Icon(
-              Icons.vpn_key,
-            ),
-            //contentPadding: EdgeInsets.only(left: 10),
-            hintText: 'Enter Password',
-            hintStyle: TextStyle(
-              fontSize: 18,
-              color: Colors.black87,
-            ),
-          ),
-        ),
-      ),
-    ],
-  );
-}
-
-Widget buildAddress() {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget>[
-      Container(
-        alignment: Alignment.centerLeft,
-        decoration: BoxDecoration(
-          color: Colors.grey[350],
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black26,
-              blurRadius: 6,
-              offset: Offset(0, 2),
-            ),
-          ],
-        ),
-        padding: EdgeInsets.only(left: 10),
-        height: 50,
-        child: TextField(
-          keyboardType: TextInputType.streetAddress,
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 18,
-          ),
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            prefixIcon: Icon(
-              Icons.location_on,
-            ),
-            //contentPadding: EdgeInsets.only(left: 10),
-            hintText: 'Address',
-            hintStyle: TextStyle(
-              fontSize: 18,
-              color: Colors.black87,
-            ),
-          ),
-        ),
-      ),
-    ],
-  );
-}
-
-Widget buildEmail() {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget>[
-      Container(
-        alignment: Alignment.centerLeft,
-        decoration: BoxDecoration(
-          color: Colors.grey[350],
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black26,
-              blurRadius: 6,
-              offset: Offset(0, 2),
-            ),
-          ],
-        ),
-        padding: EdgeInsets.only(left: 10),
-        height: 50,
-        child: TextField(
-          keyboardType: TextInputType.emailAddress,
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 18,
-          ),
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            prefixIcon: Icon(
-              Icons.mail,
-            ),
-            //contentPadding: EdgeInsets.only(left: 10),
-            hintText: 'Email',
-            hintStyle: TextStyle(
-              fontSize: 18,
-              color: Colors.black87,
-            ),
-          ),
-        ),
-      ),
-    ],
-  );
-}
-
-Widget buildContact() {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget>[
-      Container(
-        alignment: Alignment.centerLeft,
-        decoration: BoxDecoration(
-          color: Colors.grey[350],
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black26,
-              blurRadius: 6,
-              offset: Offset(0, 2),
-            ),
-          ],
-        ),
-        padding: EdgeInsets.only(left: 10),
-        height: 50,
-        child: TextField(
-          keyboardType: TextInputType.phone,
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 18,
-          ),
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            prefixIcon: Icon(
-              Icons.mobile_screen_share,
-            ),
-            //contentPadding: EdgeInsets.only(left: 10),
-            hintText: 'Contact',
-            hintStyle: TextStyle(
-              fontSize: 18,
-              color: Colors.black87,
-            ),
-          ),
-        ),
-      ),
-    ],
-  );
 }
