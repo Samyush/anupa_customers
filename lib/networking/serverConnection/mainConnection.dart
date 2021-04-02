@@ -20,15 +20,16 @@ class MainConnection {
     }
   }
 
-  Future sendData(List sendOrder) async {
+  Future sendData(var sendOrder) async {
     Map finalOrder = {'orderList': sendOrder};
 
     http.Response response = await http.post(url,
         // headers: {HttpHeaders.authorizationHeader: "Bearer $token"},
-        body: finalOrder);
+        body: finalOrder.toString());
 
+    print(finalOrder.toString());
     if (response.statusCode == 200) {
-      String data = response.body;
+      var data = response.body;
 
       return jsonDecode(data);
     } else {
