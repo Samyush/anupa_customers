@@ -200,7 +200,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Colors.lightGreenAccent,
                         child: InkWell(
                           onTap: () {
-                            signIn('samyush@email.com', '12312');
+                            // signIn('samyush@email.com', '12312');
                             signIn(
                                 emailController.text, passwordController.text);
 
