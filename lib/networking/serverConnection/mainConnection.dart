@@ -24,7 +24,7 @@ class MainConnection {
     Map finalOrder = {'orderList': sendOrder};
 
     http.Response response = await http.post(url,
-        // headers: {HttpHeaders.authorizationHeader: "Bearer $token"},
+        headers: {"Access-Control-Allow-Origin": "*"},
         body: finalOrder.toString());
 
     print(finalOrder.toString());
