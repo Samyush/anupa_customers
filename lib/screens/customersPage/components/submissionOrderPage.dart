@@ -71,42 +71,41 @@ class SubmissionOrderPartState extends State<SubmissionOrderPart> {
               ),
             );
           }
-          return Row(
-            children: [
-              Column(
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              DropdownButton(
+                  hint: Text('Please select the Customer Table'),
+                  value: dropdownValue,
+                  icon: Icon(Icons.arrow_downward),
+                  iconSize: 24,
+                  elevation: 16,
+                  style: TextStyle(color: Colors.deepPurple),
+                  underline: Container(
+                    height: 2,
+                    color: Colors.deepPurpleAccent,
+                  ),
+                  items: tables.map((table) {
+                    return DropdownMenuItem(
+                      value: table,
+                      child: Text(table),
+                    );
+                  }).toList(),
+                  onChanged: (String newValue) {
+                    setState(
+                      () {
+                        dropdownValue = newValue;
+                      },
+                    );
+                  }),
+
+              Text(selectedIsFood),
+              ColorDots(),
+              //Text(snapshot.data.toString()),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  DropdownButton(
-                      hint: Text('Please select the Customer Table'),
-                      value: dropdownValue,
-                      icon: Icon(Icons.arrow_downward),
-                      iconSize: 24,
-                      elevation: 16,
-                      style: TextStyle(color: Colors.deepPurple),
-                      underline: Container(
-                        height: 2,
-                        color: Colors.deepPurpleAccent,
-                      ),
-                      items: tables.map((table) {
-                        return DropdownMenuItem(
-                          value: table,
-                          child: Text(table),
-                        );
-                      }).toList(),
-                      onChanged: (String newValue) {
-                        setState(
-                          () {
-                            dropdownValue = newValue;
-                          },
-                        );
-                      }),
-
-                  Text(selectedIsFood),
-                  ColorDots(),
-                  //Text(snapshot.data.toString()),
                   Text('Food Price: ' + getPrice()),
-
-                  // Text('Quantity'),
                   CustomButton(
                       label: 'Submit',
                       onPressed: () {
@@ -126,6 +125,8 @@ class SubmissionOrderPartState extends State<SubmissionOrderPart> {
                       ),
                 ],
               ),
+
+              // Text('Quantity'),
             ],
           );
         });

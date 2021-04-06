@@ -11,10 +11,10 @@ class OrderListBuilder {
   listAdder(String foodIs) {
     Map orders = {
       'orderNo': (customersOrders.length + 1).toString(),
-      'tableNo': tableNo,
+      'tableNo': tableNo[tableNo.length - 2] + tableNo[tableNo.length - 1],
       'foodName': foodIs,
-      'quantity': 'X ' + counter.toString(),
-      'bill': '\$' + (int.parse(priceIs) * counter).toString(),
+      'quantity': /*'X ' +*/ counter.toString(),
+      'bill': /*'\$' + */ (int.parse(priceIs) * counter).toString(),
     };
     customersOrders.add(orders);
     print(customersOrders);
