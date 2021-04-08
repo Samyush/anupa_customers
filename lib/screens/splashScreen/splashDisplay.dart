@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:anupa_customers/networking/serverConnection/UserPersonalDemands/allFoods.dart';
-import 'package:anupa_customers/networking/serverConnection/UserPersonalDemands/allTables.dart';
 import 'package:anupa_customers/screens/loginRegister/loginScreen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,8 +14,8 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     //if following data in retrieving results to be null then it throws error
-    AllFoods().getFoods();
-    AllTables().getTables();
+    // AllFoods().getFoods();
+    // AllTables().getTables();
     Timer(
         Duration(seconds: 5),
         () => Navigator.of(context).pushReplacement(MaterialPageRoute(

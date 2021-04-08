@@ -1,5 +1,6 @@
 import 'package:anupa_customers/builder/customButton.dart';
 import 'package:anupa_customers/builder/streamer/kitchenLoginStreamer.dart';
+import 'package:anupa_customers/networking/serverConnection/UserPersonalDemands/newOrdersToKitchen.dart';
 import 'package:flutter/material.dart';
 
 class KitchenLogin extends StatefulWidget {
@@ -53,6 +54,7 @@ class _KitchenLoginState extends State<KitchenLogin> {
       child: CustomButton(
           label: 'Get In',
           onPressed: () {
+            AllOrders().getOrders();
             setState(() {
               _showMyDialog();
             });

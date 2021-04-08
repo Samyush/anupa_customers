@@ -1,7 +1,9 @@
-import 'package:anupa_customers/screens/completedOrdersPage/orderingPage.dart';
+import 'package:anupa_customers/networking/serverConnection/UserPersonalDemands/allFoods.dart';
+import 'package:anupa_customers/networking/serverConnection/UserPersonalDemands/allTables.dart';
 import 'package:anupa_customers/screens/customersPage/customersPage.dart';
 import 'package:anupa_customers/screens/kitchenPage/kitchensPage.dart';
 import 'package:anupa_customers/screens/newsFeeds/newsFeeds.dart';
+import 'package:anupa_customers/screens/totalBills/totalBillPage.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigationPage extends StatefulWidget {
@@ -14,13 +16,13 @@ class BottomNavigationPage extends StatefulWidget {
 class _BottomNavigationPageState extends State<BottomNavigationPage> {
   int _selectedIndex = 0;
 
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  // static const TextStyle optionStyle =
+  //     TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
     NewsFeeds(),
     CustomersPage(),
     KitchenPage(),
-    CompletedOrdersPage(),
+    TotalBills(),
   ];
 
   void _onItemTapped(int index) {
@@ -29,14 +31,14 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
     });
   }
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //
-  //   //if following data in retrieving results to be null then it throws error
-  //   AllFoods().getFoods();
-  //   AllTables().getTables();
-  // }
+  @override
+  void initState() {
+    super.initState();
+
+    //if following data in retrieving results to be null then it throws error
+    AllFoods().getFoods();
+    AllTables().getTables();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,8 +61,8 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
             label: 'Kitchen',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.done_all_sharp),
-            label: 'Completed Orders',
+            icon: Icon(Icons.monetization_on),
+            label: 'Total Bill',
           ),
         ],
         currentIndex: _selectedIndex,
