@@ -21,11 +21,13 @@ class MainConnection {
   }
 
   Future sendData(var sendOrder) async {
-    Map finalOrder = {'orderList': sendOrder};
+    var finalOrder = {"orderList": sendOrder};
 
-    http.Response response = await http.post(url,
-        headers: {"Access-Control-Allow-Origin": "*"},
-        body: finalOrder.toString());
+    http.Response response = await http.post(
+      url,
+      headers: {"Access-Control-Allow-Origin": "*"},
+      body: jsonEncode(finalOrder),
+    );
 
     print(finalOrder.toString());
     if (response.statusCode == 200) {
