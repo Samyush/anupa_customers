@@ -1,4 +1,5 @@
 import 'package:anupa_customers/appLists/appList.dart';
+import 'package:anupa_customers/appLists/customersPageList.dart';
 import 'package:anupa_customers/builder/customButton.dart';
 import 'package:anupa_customers/builder/orderListBuilder.dart';
 import 'package:anupa_customers/builder/streamer/foodPriceStreamer.dart';
@@ -114,6 +115,19 @@ class SubmissionOrderPartState extends State<SubmissionOrderPart> {
                           _showMyDialog();
                           print('error, select table number');
                         } else {
+                          customersOrdersAsList.add(
+                            OrderListBuilder(
+                              orderNo: (customersOrders.length + 1).toString(),
+                              tableNo: dropdownValue[dropdownValue.length - 2] +
+                                  dropdownValue[dropdownValue.length - 1],
+                              foodName: selectedIsFood,
+                              priceIs: getPrice(),
+                              quantity: counter.toString(),
+                              bill:
+                                  (int.parse(getPrice()) * counter).toString(),
+                            ),
+                          );
+
                           OrderListBuilder(
                                   tableNo: dropdownValue, priceIs: getPrice())
                               .listAdder(selectedIsFood);

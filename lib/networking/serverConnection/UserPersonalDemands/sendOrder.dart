@@ -7,7 +7,7 @@ class SendOrders {
     MainConnection mainConnection = MainConnection(urlOrders);
 
     var ratingDetails = await mainConnection.sendData(finalOrder);
-    print(ratingDetails);
+    // print(ratingDetails);
 
     // Profile(userDetail: userDetail);
 

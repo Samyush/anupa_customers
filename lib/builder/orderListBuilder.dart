@@ -6,17 +6,34 @@ class OrderListBuilder {
   final String tableNo;
   final String foodName;
   final String priceIs;
-  OrderListBuilder({this.orderNo, this.tableNo, this.foodName, this.priceIs});
+  final String quantity;
+  final String bill;
+
+  // List<OrderListBuilder> orderList;
+
+  OrderListBuilder(
+      {this.orderNo,
+      this.tableNo,
+      this.foodName,
+      this.priceIs,
+      this.bill,
+      this.quantity});
 
   listAdder(String foodIs) {
-    Map orders = {
+    var orders = {
       'orderNo': (customersOrders.length + 1).toString(),
       'tableNo': tableNo[tableNo.length - 2] + tableNo[tableNo.length - 1],
       'foodName': foodIs,
       'quantity': /*'X ' +*/ counter.toString(),
       'bill': /*'\$' + */ (int.parse(priceIs) * counter).toString(),
     };
+
+    // orderList.add(
+    //   // orderNo,
+    // );
+
     customersOrders.add(orders);
     print(customersOrders);
+    print(customersOrdersAsList);
   }
 }

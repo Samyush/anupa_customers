@@ -17,7 +17,7 @@ class CustomersPage extends StatelessWidget {
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {
-              SendOrders().sendOrder(customersOrders);
+              SendOrders().sendOrder(customersOrdersAsList);
               // MyRating().rateIt(happy, ratingSlider);
             },
           ),

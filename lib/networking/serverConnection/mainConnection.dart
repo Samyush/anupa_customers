@@ -26,7 +26,7 @@ class MainConnection {
     http.Response response = await http.post(
       url,
       headers: {"Access-Control-Allow-Origin": "*"},
-      body: jsonEncode(finalOrder),
+      body: finalOrder.toString(),
     );
 
     print(finalOrder.toString());
