@@ -52,21 +52,22 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-            colors: [
-              Color(0xFFFBCA8F),
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: [
+            Color(0xFFFBCA8F),
 
-              Colors.white,
-              // Color(0xFFFBCA8F),
-            ],
-          ),
+            Colors.white,
+            // Color(0xFFFBCA8F),
+          ],
         ),
+      ),
+      child: Center(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             DropdownButton(
                 hint: Text('Please select the Customer Table'),
@@ -109,10 +110,27 @@ class _BodyState extends State<Body> {
                 }
                 // _showMyDialog(),
                 ),
+            SizedBox(
+              height: 40,
+            ),
             Card(
               elevation: 2.0,
               color: Colors.white,
-              child: Text('bill is 100000'),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ListTile(
+                    leading: Icon(Icons.album),
+                    title: Text('Table No: '),
+                    subtitle: Text('Total Bill: \$'),
+                  ),
+                  Text('bill is 100000'),
+                  Text('bill is 100000'),
+                  Text('bill is 100000'),
+                  Text('bill is 100000'),
+                  Text('bill is 100000'),
+                ],
+              ),
             ),
           ],
         ),
