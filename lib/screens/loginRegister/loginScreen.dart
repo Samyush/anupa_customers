@@ -17,6 +17,45 @@ class _LoginScreenState extends State<LoginScreen> {
   String password;
   final TextEditingController emailController = TextEditingController();
   String email;
+
+  _showMyDialog(String label1, label2) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Anupa App'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(label1),
+                Text(label2),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Cancel'),
+              onPressed: () {
+                setState(() {
+                  Navigator.pop(context);
+                });
+              },
+            ),
+            TextButton(
+              child: Text('OK'),
+              onPressed: () {
+                setState(() {
+                  Navigator.pop(context);
+                });
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   signIn(String email, pass) async {
     // SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     Map data = {'email': email, 'password': pass};
@@ -40,7 +79,8 @@ class _LoginScreenState extends State<LoginScreen> {
     } else {
       setState(() {
         showSpinner = false;
-        // _showMyDialog();
+        _showMyDialog('Looks like there\'s an error.',
+            'Try again with correct credentials');
       });
       print(response.body);
     }

@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:anupa_customers/networking/API_constants/apiS.dart';
-import 'package:anupa_customers/screens/bottomNavigations/bottomNavs.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -34,8 +33,7 @@ class _RegisterState extends State<Register> {
         });
         // sharedPreferences.setString("token", jsonResponse['token']);
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(
-                builder: (BuildContext context) => BottomNavigationPage()),
+            MaterialPageRoute(builder: (BuildContext context) => LoginScreen()),
             (Route<dynamic> route) => false);
       }
     } else {
