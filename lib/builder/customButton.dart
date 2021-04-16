@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  CustomButton({this.onPressed, @required this.label});
+  CustomButton({this.onPressed, @required this.label, this.colour});
   final Function onPressed;
   final String label;
+  final Color colour;
   @override
   Widget build(BuildContext context) {
     return Padding(

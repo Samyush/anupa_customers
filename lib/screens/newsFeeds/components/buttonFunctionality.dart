@@ -1,4 +1,5 @@
 import 'package:anupa_customers/builder/customButton.dart';
+import 'package:anupa_customers/screens/loginRegister/loginScreen.dart';
 import 'package:flutter/material.dart';
 
 class ButtonFunctionality extends StatelessWidget {
@@ -11,22 +12,26 @@ class ButtonFunctionality extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
+        // CustomButton(
+        //   label: 'Call Us',
+        //   onPressed: () {
+        //     print('hello');
+        //   },
+        // ),
+        // CustomButton(
+        //   label: 'Email Us',
+        //   onPressed: () {
+        //     print('hello');
+        //   },
+        // ),
         CustomButton(
-          label: 'Call Us',
+          label: 'LogOut',
           onPressed: () {
-            print('hello');
-          },
-        ),
-        CustomButton(
-          label: 'Email Us',
-          onPressed: () {
-            print('hello');
-          },
-        ),
-        CustomButton(
-          label: 'Website',
-          onPressed: () {
-            print('hello');
+            Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                    builder: (BuildContext context) => LoginScreen()),
+                (Route<dynamic> route) => false);
+            print('redirect to login');
           },
         ),
       ],
