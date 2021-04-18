@@ -27,14 +27,15 @@ class _RegisterState extends State<Register> {
       jsonResponse = json.decode(response.body);
       print('Response status: ${response.statusCode}');
       print('Response body: ${response.body}');
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (BuildContext context) => LoginScreen()),
+          (Route<dynamic> route) => false);
       if (jsonResponse != null) {
         setState(() {
           showSpinner = false;
         });
         // sharedPreferences.setString("token", jsonResponse['token']);
-        Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (BuildContext context) => LoginScreen()),
-            (Route<dynamic> route) => false);
+
       }
     } else {
       setState(() {
