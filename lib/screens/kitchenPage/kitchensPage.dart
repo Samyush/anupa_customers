@@ -1,4 +1,3 @@
-import 'package:anupa_customers/networking/serverConnection/UserPersonalDemands/newOrdersToKitchen.dart';
 import 'package:anupa_customers/screens/kitchenPage/components/body.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +15,7 @@ class KitchenPage extends StatelessWidget {
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {
-              AllOrders().getOrders();
+              // AllOrders().getOrders();
             },
           ),
         ],

@@ -12,18 +12,6 @@ class ButtonFunctionality extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        // CustomButton(
-        //   label: 'Call Us',
-        //   onPressed: () {
-        //     print('hello');
-        //   },
-        // ),
-        // CustomButton(
-        //   label: 'Email Us',
-        //   onPressed: () {
-        //     print('hello');
-        //   },
-        // ),
         CustomButton(
           label: 'LogOut',
           onPressed: () {

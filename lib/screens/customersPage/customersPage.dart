@@ -4,11 +4,13 @@ import 'package:anupa_customers/screens/customersPage/components/body.dart';
 import 'package:flutter/material.dart';
 
 class CustomersPage extends StatelessWidget {
+  final String title = 'Place Orders';
+  //
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Place Your Orders'),
+        title: Text(title),
         actions: <Widget>[
           IconButton(
             icon: Icon(
@@ -17,7 +19,11 @@ class CustomersPage extends StatelessWidget {
             ),
             tooltip: 'Show Snackbar',
             onPressed: () {
-              SendOrders().sendOrder(customersOrdersAsList);
+              var success = SendOrders().sendOrder(customersOrders);
+              if (success != null) {
+                // title = 'Success';
+                print('og og');
+              }
               // MyRating().rateIt(happy, ratingSlider);
             },
           ),

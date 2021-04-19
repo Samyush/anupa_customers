@@ -25,32 +25,33 @@ class Body extends StatelessWidget {
                     elevation: 2.0,
                     color: Colors.white,
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       mainAxisSize: MainAxisSize.min,
                       children: [
+                        ButtonFunctionality(),
                         const ListTile(
                           leading: Icon(Icons.album),
                           title: Text('New Data: '),
                           subtitle: Text('What Is: \$'),
                         ),
-                        Text('bill is 100000'),
-                        Text('bill is 100000'),
-                        Text('bill is 100000'),
-                        Text('bill is 100000'),
-                        Text('bill is 100000'),
+                        Text(
+                          ' Food Is Hot, Hope you have been enjoying our special discounts!! ',
+                          style: TextStyle(fontSize: 40),
+                        ),
+                        Text(
+                          ' Well Well ',
+                          style: TextStyle(fontSize: 40),
+                        ),
+                        Text(
+                          ' 3 ',
+                          style: TextStyle(fontSize: 40),
+                        ),
+                        Text(
+                          ' 4 ',
+                          style: TextStyle(fontSize: 40),
+                        ),
                       ],
                     ),
-                  ),
-                  Center(
-                    child: Image.asset(
-                      'images/anupaRestro.png',
-                      // height: queryData.size.height / 1.8,
-                      // width: queryData.size.width / 1.8,
-                    ),
-                  ),
-                  //
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
-                    child: ButtonFunctionality(),
                   ),
                 ],
               ),

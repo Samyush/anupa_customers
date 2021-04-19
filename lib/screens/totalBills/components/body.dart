@@ -1,6 +1,7 @@
 import 'package:anupa_customers/appLists/appList.dart';
 import 'package:anupa_customers/builder/customButton.dart';
 import 'package:anupa_customers/builder/streamer/foodStreamer.dart';
+import 'package:anupa_customers/networking/serverConnection/mainConnection.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatefulWidget {
@@ -10,6 +11,30 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   String dropdownValue;
+  String totalBill = 'No bill';
+
+  Future<dynamic> getBills(var neededUrl) async {
+    MainConnection connector = MainConnection(neededUrl);
+
+    var tableBill = await connector.receiveData();
+    print(tableBill);
+    // print(foodDetails);
+    return updateUI(tableBill);
+    // return foodDetails;
+  }
+
+  updateUI(var billData) {
+    if (billData['amount'] == 0) {
+      setState(() {
+        totalBill = '0';
+      });
+    } else {
+      setState(() {
+        totalBill = billData['amount'].toString();
+      });
+      print(totalBill);
+    }
+  }
 
   _showMyDialog() async {
     return showDialog<void>(
@@ -90,20 +115,25 @@ class _BodyState extends State<Body> {
                   setState(
                     () {
                       dropdownValue = newValue;
+                      selectedIsFood = newValue;
                     },
                   );
                 }),
             CustomButton(
                 label: 'Check',
                 onPressed: () {
-                  if (dropdownValue == null ||
-                      selectedIsFood == "Please Select Food") {
+                  if (dropdownValue == null) {
                     _showMyDialog();
                     print('error, select table number');
                   } else {
-                    // OrderListBuilder(
-                    //     tableNo: dropdownValue, priceIs: getPrice())
-                    //     .listAdder(selectedIsFood);
+                    getBills(Uri.http(
+                        '10.0.2.2:8000',
+                        'api/bills/' +
+                            dropdownValue[dropdownValue.length - 2] +
+                            dropdownValue[dropdownValue.length - 1]));
+
+                    // tableNo[tableNo.length - 2] + tableNo[tableNo.length - 1],
+
                   }
                   // orderList.add('value');
                   // print(orderList);
@@ -121,14 +151,18 @@ class _BodyState extends State<Body> {
                 children: [
                   const ListTile(
                     leading: Icon(Icons.album),
-                    title: Text('Table No: '),
+                    title: Text(
+                      'Thank-you, Visit Again',
+                    ),
                     subtitle: Text('Total Bill: \$'),
                   ),
-                  Text('bill is 100000'),
-                  Text('bill is 100000'),
-                  Text('bill is 100000'),
-                  Text('bill is 100000'),
-                  Text('bill is 100000'),
+                  Text(
+                    '\$ ' + totalBill,
+                    style: TextStyle(fontSize: 200),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
                 ],
               ),
             ),

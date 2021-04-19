@@ -1,4 +1,4 @@
-import 'package:anupa_customers/builder/halfPageBuilder.dart';
+import 'package:anupa_customers/builder/kitchenPageBuilder.dart';
 import 'package:flutter/material.dart';
 
 class AfterLogin extends StatelessWidget {
@@ -20,7 +20,7 @@ class AfterLogin extends StatelessWidget {
               ),
             ),
             // color: Color(0xFFFBCA8F),
-            child: HalfPageBuilder(
+            child: KitchenPageBuilder(
               label: 'New Orders',
             ),
           ),
